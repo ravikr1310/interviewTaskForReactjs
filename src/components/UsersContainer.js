@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router,Routes,Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import UsersDetails from './UsersDetails';
 const users = [
     { id: 1, name: "Sumit", email: "sumit@gmail.com" },
@@ -17,12 +17,11 @@ function UsersContainer() {
                 <h1>React Dynamic Routing</h1>
                 <ul>
                     {
-                        users.map((item) => 
-                            <div><li><Link to={"/user/"+item.id}>{item.name}</Link></li></div>)
+                        users.map((item) => <div><li><Link to={"/user/" + item.id}>{item.name}</Link></li></div>)
                     }
                 </ul>
                 <Routes>
-                <Route path="/user/:id" element={<UsersDetails userdata={users}/>}/>
+                    <Route path="/user/:id" element={<UsersDetails userdata={users} />} />
                 </Routes>
             </Router>
         </div>

@@ -8,9 +8,11 @@ import Layout from './components/Layout';
 import NotFound from './components/NotFound';
 import { useState } from 'react';
 import UsersContainer from './components/UsersContainer';
-function App() {
+import UsersDetails from './components/UsersDetails';
+function App(props) {
   const [data, setData] = useState("Evc Venture");
-
+  console.log("Hello",props)
+  const ids = 12;
   return (
     <div>
       <UsersContainer />
@@ -20,6 +22,7 @@ function App() {
             <Route index element={<Home data={data} />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/user/:id" element={<UsersDetails />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

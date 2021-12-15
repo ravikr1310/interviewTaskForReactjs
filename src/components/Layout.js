@@ -1,6 +1,7 @@
 import { Outlet, Link } from 'react-router-dom';
 
 const Layout = () => {
+    const ids = 100
     return (
         <>
             <nav>
@@ -14,9 +15,9 @@ const Layout = () => {
                     <li>
                         <Link to="/blog">Blog</Link>
                     </li>
-                    {/* <li>
-                        <Link to="/users">Users</Link>
-                    </li> */}
+                    <li>
+                        <Link to={"/user/"+ids}>Users</Link>
+                    </li>
                 </ul>
             </nav>
             <Outlet />
