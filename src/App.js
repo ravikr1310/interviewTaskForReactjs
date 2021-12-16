@@ -1,15 +1,14 @@
 
 import './App.css';
-import { BrowserRouter, HashRouter, MemoryRouter, Routes, Route } from 'react-router-dom';
-import Home from './components/Home';
-import Contact from './components/Contact';
-import Blog from './components/Blog';
-import Layout from './components/Layout';
-import NotFound from './components/NotFound';
-import { useState ,useEffect} from 'react';
-import UsersDetails from './components/UsersDetails';
-function App(props) {
-  const [data, setData] = useState("Evc Venture");
+import Layout from './components/Layout/Layout';
+import { BrowserRouter as Router, Switch, Route, Routes } from "react-router-dom";
+import Home from './components/Home/Home';
+import About from './components/About/About';
+import Contact from './components/Contact/Contact';
+import NotFound from './components/PageNotFound/NotFound';
+import Users from './components/Users/Users';
+
+function App() {
   const users = [
     { id: 1, name: "Sumit", email: "sumit@gmail.com" },
     { id: 2, name: "Deepak", email: "deepak@gmail.com" },
@@ -19,43 +18,18 @@ function App(props) {
     { id: 6, name: "Sudip", email: "sudip@gmail.com" },
     { id: 7, name: "Sigma", email: "sigma@gmail.com" },
   ]
-  useEffect(() => {
-    setData(users);
-  },[]);
-  const ids = 12;
   return (
     <div>
-      <BrowserRouter>
+      <Router>
+      <Layout />
         <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home data={data} />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/user/:id" element={<UsersDetails data={users} />} />
-            <Route path="*" element={<NotFound />} />
-          </Route>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/user" element={<Users userdata={users}/>}/>
+          <Route path="*" exact element={<NotFound/>}/>
         </Routes>
-      </BrowserRouter>
-      {/* <HashRouter>
-      <Routes>
-        <Route path="/" element={<Layout/>}>
-            <Route index element={<Home data={data}/>}/>
-            <Route path="/blog" element={<Blog/>}/>
-            <Route path="/contact" element={<Contact/>}/>
-            <Route path="*" element={<NotFound/>}/>
-        </Route>
-      </Routes>
-    </HashRouter>
-    <MemoryRouter>
-      <Routes>
-        <Route path="/" element={<Layout/>}>
-            <Route index element={<Home data={data}/>}/>
-            <Route path="/blog" element={<Blog/>}/>
-            <Route path="/contact" element={<Contact/>}/>
-            <Route path="*" element={<NotFound/>}/>
-        </Route>
-      </Routes>
-    </MemoryRouter> */}
+      </Router>
     </div>
   );
 }
