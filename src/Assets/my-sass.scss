@@ -1,0 +1,33 @@
+@import 'variables';
+@import 'mixinGlobal';
+@import 'extendsInheritance';
+
+h1 {
+  @include text-style;
+}
+
+nav {
+  ul{
+    margin:0;
+    padding:0;
+    list-style:none
+  }
+  li{
+    display: inline-block;
+  }
+  a{
+    display: block;
+    padding:6px 10px;
+    text-decoration: none;
+    color: $myColor;
+
+  }
+}
+
+div{
+  @include custom-border-radius(40px)
+}
+
+.container{
+  @extend .container-wrap
+}
