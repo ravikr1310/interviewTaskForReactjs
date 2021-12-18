@@ -1,32 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useContext,useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Modal from '../Modal/Modal';
+import UserContext from '../../GlobalVariable';
 
 function Users(props) {
-    const [data, setData] = useState(props.userdata);
-    const [count,setCount] = useState(0);
-    
-    const handleModal = (value) =>{
+    const [count, setCount] = useState(0);
+    const user = useContext(UserContext);
+    const [userdetails, setUserdetails] = useState({});
+    const [isvisible, setIsvisible] = useState(false);
+
+    const handleModal = (value) => {
         debugger;
-        // setCount(value);
-        // alert(count);
-        setCount(previousState => {
-            return { ...previousState, id: value }
-          });
+        // setIsvisible(true);
+        setUserdetails(value);
+        
     }
-    
+    useEffect(() => {
+        handleModal();
+      }, [props]);
     return (
         <div>
             <h2>This is Users Details Page.</h2>
             <ul>
-                {data.map((item) => (
+                {
+                    user.map((item) => (
                     <div>
-                        <li><Link to={item.name} onClick={() => handleModal(item.id)}>{item.name}</Link></li>
-                        {
-                            count === item.id && <Modal/>
-                        }
-                    </div>))}
+                        <li><Link to={"/user/"+item.id} key={item.id} onClick={() => handleModal(item)}>{item.name}</Link></li>
+                    </div>
+                    
+                ))}
             </ul>
+            {/* <Modal handleModal={handleModal()}/> */}
         </div>
     )
 }
