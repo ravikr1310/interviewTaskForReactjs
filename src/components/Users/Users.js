@@ -8,16 +8,20 @@ function Users(props) {
     const user = useContext(UserContext);
     const [userdetails, setUserdetails] = useState({});
     const [isvisible, setIsvisible] = useState(false);
+    const [userfound, setUserfound] = useState({});
 
     const handleModal = (value) => {
-        debugger;
+        //debugger
         // setIsvisible(true);
-        setUserdetails(value);
-        
+        setUserdetails(previousState => {
+            return {...previousState,value: value}
+        });        
+        setUserfound(value);
+        setIsvisible(true)
     }
-    useEffect(() => {
-        handleModal();
-      }, [props]);
+    // useEffect(() => {
+    //     handleModal();
+    //   }, [props]);
     return (
         <div>
             <h2>This is Users Details Page.</h2>
@@ -26,11 +30,11 @@ function Users(props) {
                     user.map((item) => (
                     <div>
                         <li><Link to={"/user/"+item.id} key={item.id} onClick={() => handleModal(item)}>{item.name}</Link></li>
-                    </div>
-                    
+                    </div>                    
                 ))}
             </ul>
-            {/* <Modal handleModal={handleModal()}/> */}
+            {isvisible && 
+                <Modal userfound={userfound} isvisible={isvisible}/>}
         </div>
     )
 }
