@@ -6,8 +6,10 @@ function Modal(props){
     const [isClose, setClose] = useState(props.isvisible);
     const handleClose = (value) =>{
         debugger
-        setClose(value)
+        setClose(value);
+        console.log("child data: ",props.handleModal(value));
     }
+    
     return(
         <div className="modal">
             <div className="dialog"><a href="#" onClick={()=>handleClose(false)}>Close</a></div>

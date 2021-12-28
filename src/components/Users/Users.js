@@ -4,24 +4,23 @@ import Modal from '../Modal/Modal';
 import UserContext from '../../GlobalVariable';
 
 function Users(props) {
+    console.log("User.js",props)
     const [count, setCount] = useState(0);
     const user = useContext(UserContext);
     const [userdetails, setUserdetails] = useState({});
-    const [isvisible, setIsvisible] = useState(false);
+    const [isvisible, setIsvisible] = useState(Boolean);
     const [userfound, setUserfound] = useState({});
 
     const handleModal = (value) => {
-        //debugger
-        // setIsvisible(true);
         setUserdetails(previousState => {
             return {...previousState,value: value}
         });        
         setUserfound(value);
-        setIsvisible(true)
+        setIsvisible(true);
     }
-    // useEffect(() => {
-    //     handleModal();
-    //   }, [props]);
+    useEffect(() => {
+        console.log("use in every render");
+    },[user]);
     return (
         <div>
             <h2>This is Users Details Page.</h2>
@@ -34,7 +33,8 @@ function Users(props) {
                 ))}
             </ul>
             {isvisible && 
-                <Modal userfound={userfound} isvisible={isvisible}/>}
+                <Modal handleModal={handleModal()} userfound={userfound} isvisible={isvisible}/>
+            }
         </div>
     )
 }
