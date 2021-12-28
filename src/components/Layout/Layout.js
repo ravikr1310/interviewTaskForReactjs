@@ -5,7 +5,7 @@ function Layout(){
     return(
         <>
             <Link to="/about">About</Link>
-            <Link to="/home">Home</Link>
+            <Link to="/">Home</Link>
             <Link to="/contact">Contact</Link>
             <Link to={"/user/"+ids}>User</Link>
             <Outlet/>
