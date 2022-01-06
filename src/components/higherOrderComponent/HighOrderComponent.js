@@ -1,6 +1,6 @@
 import React from 'react';
 
-const UpdatedComponent = OriginalComponent =>{
+const UpdatedComponent = (OriginalComponent,incNumber) =>{
     class NewComponent extends React.Component{
         constructor(){
             super()
@@ -11,13 +11,14 @@ const UpdatedComponent = OriginalComponent =>{
         incrementCounter = () =>{
             this.setState(prevState => {
                 return {
-                    count: prevState.count + 1
+                    count: prevState.count + incNumber
                 }            
             })
         }
         render(){
+            console.log(">>>>>",this.props.name)
             return(
-                <OriginalComponent count={this.state.count} incrementCounter={this.incrementCounter}/>
+                <OriginalComponent count={this.state.count} incrementCounter={this.incrementCounter} {... this.props}/>
             )
         }
     }

@@ -30,8 +30,8 @@ function App() {
   
   return (
     <>
-    <ClickCounter/>
-    <HoverCounter/>
+    <ClickCounter name="Kapil deev"/>
+    <HoverCounter name="Sunil"/>
     {/* <MemoParentComponent/> */}
     {/* <ParentComponent/> */}
     {/* <Student name="Kranti"/> */}
