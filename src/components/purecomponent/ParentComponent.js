@@ -10,11 +10,11 @@ class ParentComponent extends Component {
         }
     }
     componentDidMount(){
-        // setInterval(()=>{
-        //     this.setState({
-        //         name: "Kiran"
-        //     }) 
-        // },2000)
+        setInterval(()=>{
+            this.setState({
+                name: "Kiran"
+            }) 
+        },2000)
     }
     render() {
         console.log("********** Parent component")
