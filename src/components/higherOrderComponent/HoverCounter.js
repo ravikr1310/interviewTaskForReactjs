@@ -5,11 +5,11 @@ class HoverCounter extends Component{
     render(){
         return (
             <div>
-                <button onMouseOver={this.props.incrementCounter}>Click Counter : {this.props.count}</button>
+                <button onMouseOver={this.props.incrementCounter}>Click Counter : {this.props.count} {this.props.name}</button>
             
             </div>
         )
     }
 }
 
-export default UpdatedComponent(HoverCounter);
+export default UpdatedComponent(HoverCounter,4);
