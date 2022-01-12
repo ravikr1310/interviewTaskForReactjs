@@ -23,15 +23,19 @@ import ParentComponent from './components/purecomponent/ParentComponent';
 import MemoParentComponent from './components/memo/MemoParentComponent';
 import ClickCounter from './components/higherOrderComponent/ClickCounter';
 import HoverCounter from './components/higherOrderComponent/HoverCounter';
+import {useSelector, useDispatch} from 'react-redux';
+import {iscrNumber, decreNumber} from './components/redux/Actions'
 
 function App() {
-
-  const test = "Ravi Kumar";
-  
+  const mystore = useSelector(state => state.changeTheNumber);
+  const dispatch = useDispatch();
   return (
     <>
-    <ClickCounter name="Kapil deev"/>
-    <HoverCounter name="Sunil"/>
+    <a onClick={() => dispatch(decreNumber())}>INC</a>
+    <input value={mystore}></input>
+    <a onClick={() => dispatch(iscrNumber())}>DEC</a>
+    {/* <ClickCounter name="Kapil deev"/>
+    <HoverCounter name="Sunil"/> */}
     {/* <MemoParentComponent/> */}
     {/* <ParentComponent/> */}
     {/* <Student name="Kranti"/> */}
